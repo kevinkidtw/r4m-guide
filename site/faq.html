@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>常見問題｜機關王 R4M 程式說明站</title>
+  <!-- rg-early:start -->
+<script>
+(function(){try{
+  var t=localStorage.getItem('rg-theme');
+  if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+  var fs=localStorage.getItem('rg-fs');
+  if(fs==='0.92'||fs==='1'||fs==='1.12')document.documentElement.style.setProperty('--fs-user',fs);
+}catch(e){}})();
+</script>
+<!-- rg-early:end -->
+  <link rel="stylesheet" href="assets/rg.css?v=0ee58b4a">
+</head>
+<body>
+
+<!-- rg-nav:start（共用頁首，由 build/build_site.py 自動注入，勿手改） -->
+<header class="rg-header">
+  <div class="rg-header-inner">
+    <div class="rg-brand-row">
+      <a class="rg-brand" href="index.html">🚜 機關王 R4M 程式說明站</a>
+      <span class="rg-bread-sep">/</span>
+      <span class="rg-bread-here">常見問題</span>
+    </div>
+    <div class="rg-tools">
+      <div class="rg-tool-group" role="group" aria-label="字級調整">
+        <button type="button" class="rg-tool-btn" data-rg-fs="0.92" aria-pressed="false" title="縮小字級">A－</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-fs="1" aria-pressed="true" title="標準字級">A</button>
+        <button type="button" class="rg-tool-btn" data-rg-fs="1.12" aria-pressed="false" title="放大字級">A＋</button>
+      </div>
+      <div class="rg-tool-group" role="group" aria-label="顯示模式">
+        <button type="button" class="rg-tool-btn" data-rg-theme="light" aria-pressed="false">淺色</button>
+        <button type="button" class="rg-tool-btn" data-rg-theme="dark" aria-pressed="false">深色</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-theme="auto" aria-pressed="true">自動</button>
+      </div>
+    </div>
+  </div>
+  <nav class="rg-nav-bar" aria-label="全站導覽">
+    <div class="rg-nav-scroll">
+      <a class="rg-nav-link" data-rg-page="index.html" href="index.html">首頁</a>
+      <a class="rg-nav-link" data-rg-page="prepare.html" href="prepare.html">上場前準備</a>
+      <a class="rg-nav-link" data-rg-page="pairing.html" href="pairing.html">設定與配對</a>
+      <a class="rg-nav-link" data-rg-page="ksb.html" href="ksb.html">KSB 搖桿</a>
+      <a class="rg-nav-link" data-rg-page="v7rc.html" href="v7rc.html">手機 V7RC</a>
+      <a class="rg-nav-link" data-rg-page="ccar.html" href="ccar.html">C 車循跡</a>
+      <a class="rg-nav-link is-current" aria-current="page" data-rg-page="faq.html" href="faq.html">常見問題</a>
+      <a class="rg-nav-link" data-rg-page="tech.html" href="tech.html">老師專區</a>
+    </div>
+  </nav>
+</header>
+<!-- rg-nav:end -->
+
+<main class="rg-wrap">
+  <header class="rg-mast">
+    <p class="rg-kicker">TROUBLESHOOTING · FAQ</p>
+    <h1>常見問題</h1>
+    <p class="rg-dek">先看症狀、再查原因。大部分「怪問題」都是電池或拿錯遙控器。</p>
+  </header>
+
+  <section class="rg-section">
+    <h2>A／B 車（KSB 搖桿）</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>症狀</th><th>先檢查</th><th>處理</th></tr></thead>
+        <tbody>
+          <tr><td>車子完全不動，中心閃爍</td><td>遙控器有開嗎？是不是拿錯支？</td><td>打開遙控器；看貼紙拿回自己那支，或重新配對</td></tr>
+          <tr><td>遙控器一直震動</td><td>車子有開嗎？電池有電嗎？距離太遠？</td><td>打開車子、換電池；拿錯支就拿回自己那支</td></tr>
+          <tr><td>搖桿放開，車子自己慢慢跑</td><td>開機時手有沒有碰到搖桿？</td><td>遙控器關機，手放開再開機</td></tr>
+          <tr><td>車子會動，但動一下就頓住、時好時壞</td><td>電池快沒電</td><td><strong>先換電池</strong>，不要先懷疑程式</td></tr>
+          <tr><td>畫面出現 L</td><td>開機時按著 A 和 B</td><td>關機，手放開再開機</td></tr>
+          <tr><td>重新燒錄後設定都不見了</td><td>正常</td><td>重做設定與配對</td></tr>
+          <tr><td>按了鍵沒反應</td><td>按太快，或在畫面捲動時按</td><td>改成按住不放，等畫面出現該出現的東西</td></tr>
+          <tr><td>想進設定，結果出現 P（進了配對）</td><td>按成 A 了</td><td>等 15 秒會自動取消（出現 ✗），原本的配對不會不見</td></tr>
+          <tr><td>別人的遙控器也能控我的車</td><td>配對時旁邊有別的遙控器開著</td><td>其他遙控器關掉，重新配對，再做交叉測試</td></tr>
+          <tr><td>車子一直停在 P</td><td>遙控器沒開，或遙控器燒的程式和車子不是同一批</td><td>打開遙控器；請老師重燒遙控器</td></tr>
+          <tr><td>某個機構沒力或會抖</td><td>電池電量</td><td>換電池；仍然如此請老師檢查</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>A／B 車（手機 V7RC）</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>症狀</th><th>處理</th></tr></thead>
+        <tbody>
+          <tr><td>清單裡找不到車子</td><td>確認車子有開、沒被別支手機連著；手機以前連過這台 → 藍牙設定「忘記此裝置」；都不是 → 請老師確認燒錄時有裝 V7RC 擴充套件</td></tr>
+          <tr><td>連上了但車子不動</td><td>手機 App 要選 Game ADV 介面</td></tr>
+          <tr><td>不知道哪台是我的</td><td>車子沒連線時按 A，看捲出來的藍牙名稱</td></tr>
+          <tr><td>手機一鎖螢幕車子就停</td><td>正常的安全設計，螢幕保持亮著</td></tr>
+          <tr><td>別隊連到我的車</td><td>先連先贏：開機後立刻用自己的手機連上</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>C 車（循跡）</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>症狀</th><th>原因</th><th>處理</th></tr></thead>
+        <tbody>
+          <tr><td>按 B 後車子原地打轉或亂走</td><td>感測器讀值相反</td><td>搖一搖檢查，亮暗相反就把 <code>黑</code> 改成 0</td></tr>
+          <tr><td>往後退而不是往前</td><td>馬達方向相反</td><td>改 <code>L_正轉</code> 或 <code>R_正轉</code></td></tr>
+          <tr><td>畫面顯示 T 後停車</td><td>一段路超過 20 秒沒看到橫線</td><td>確認三顆感測器都壓得到橫線；速度太慢就調高 <code>V_直行</code></td></tr>
+          <tr><td>畫面顯示 L 後停車</td><td>卸料或迴轉後找不到黑線</td><td>檢查 <code>MS_每度</code>（轉角不準會偏離太遠）與 <code>退出距離</code></td></tr>
+          <tr><td>取料、卸料的位置每次都差一點</td><td>里程換算不準</td><td>重新量 <code>MS_每公分</code>、<code>MS_每度</code>；換電池後也要重量</td></tr>
+          <tr><td>卸料後飼料又被帶出來</td><td>退出距離小於料斗深度</td><td>加大 <code>退出距離</code></td></tr>
+          <tr><td>跑到一半要停</td><td>—</td><td>按 <strong>A</strong> 急停</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>燒錄</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>症狀</th><th>處理</th></tr></thead>
+        <tbody>
+          <tr><td>出現 <code>Cannot find name 'flashstorage'</code></td><td>擴充功能貼上 <code>github:bsiever/microbit-pxt-flashstorage</code></td></tr>
+          <tr><td>出現 <code>Cannot find name 'KSB045'</code></td><td>擴充功能貼上 <code>github:lioujj/pxt-KSB045</code></td></tr>
+          <tr><td>出現 <code>Cannot find name 'bluetooth'</code> 或 V7RC 相關紅字</td><td>擴充功能貼上 <code>github:lioujj/pxt-V7RC</code>（會自動帶入藍牙）</td></tr>
+          <tr><td>裝 V7RC 時跳出要移除 radio</td><td>按確定，藍牙和 radio 不能同時用</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- rg-footer:start -->
+<footer class="rg-footer">
+  <div>車城自造教育科技中心 · 2027 世界機關王 R4M 基礎組程式說明站（更新日期：2026-10-31）</div>
+  <div><a href="index.html">回說明站首頁</a> · <a href="https://ccmtc.mooo.com/">回科技中心官網</a></div>
+</footer>
+<!-- rg-footer:end -->
+</main>
+
+<script src="assets/rg.js?v=89f66e89"></script>
+</body>
+</html>

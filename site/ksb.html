@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>A／B 車 KSB 搖桿操作｜機關王 R4M 程式說明站</title>
+  <!-- rg-early:start -->
+<script>
+(function(){try{
+  var t=localStorage.getItem('rg-theme');
+  if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+  var fs=localStorage.getItem('rg-fs');
+  if(fs==='0.92'||fs==='1'||fs==='1.12')document.documentElement.style.setProperty('--fs-user',fs);
+}catch(e){}})();
+</script>
+<!-- rg-early:end -->
+  <link rel="stylesheet" href="assets/rg.css?v=0ee58b4a">
+</head>
+<body>
+
+<!-- rg-nav:start（共用頁首，由 build/build_site.py 自動注入，勿手改） -->
+<header class="rg-header">
+  <div class="rg-header-inner">
+    <div class="rg-brand-row">
+      <a class="rg-brand" href="index.html">🚜 機關王 R4M 程式說明站</a>
+      <span class="rg-bread-sep">/</span>
+      <span class="rg-bread-here">A／B 車 KSB 搖桿操作</span>
+    </div>
+    <div class="rg-tools">
+      <div class="rg-tool-group" role="group" aria-label="字級調整">
+        <button type="button" class="rg-tool-btn" data-rg-fs="0.92" aria-pressed="false" title="縮小字級">A－</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-fs="1" aria-pressed="true" title="標準字級">A</button>
+        <button type="button" class="rg-tool-btn" data-rg-fs="1.12" aria-pressed="false" title="放大字級">A＋</button>
+      </div>
+      <div class="rg-tool-group" role="group" aria-label="顯示模式">
+        <button type="button" class="rg-tool-btn" data-rg-theme="light" aria-pressed="false">淺色</button>
+        <button type="button" class="rg-tool-btn" data-rg-theme="dark" aria-pressed="false">深色</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-theme="auto" aria-pressed="true">自動</button>
+      </div>
+    </div>
+  </div>
+  <nav class="rg-nav-bar" aria-label="全站導覽">
+    <div class="rg-nav-scroll">
+      <a class="rg-nav-link" data-rg-page="index.html" href="index.html">首頁</a>
+      <a class="rg-nav-link" data-rg-page="prepare.html" href="prepare.html">上場前準備</a>
+      <a class="rg-nav-link" data-rg-page="pairing.html" href="pairing.html">設定與配對</a>
+      <a class="rg-nav-link is-current" aria-current="page" data-rg-page="ksb.html" href="ksb.html">KSB 搖桿</a>
+      <a class="rg-nav-link" data-rg-page="v7rc.html" href="v7rc.html">手機 V7RC</a>
+      <a class="rg-nav-link" data-rg-page="ccar.html" href="ccar.html">C 車循跡</a>
+      <a class="rg-nav-link" data-rg-page="faq.html" href="faq.html">常見問題</a>
+      <a class="rg-nav-link" data-rg-page="tech.html" href="tech.html">老師專區</a>
+    </div>
+  </nav>
+</header>
+<!-- rg-nav:end -->
+
+<main class="rg-wrap">
+  <header class="rg-mast">
+    <p class="rg-kicker">KSB045 JOYSTICK · CONTROLS</p>
+    <h1>A／B 車 KSB 搖桿操作</h1>
+    <p class="rg-dek">一支遙控器控一台車。搖桿負責行走，六顆按鍵負責機構與微調。</p>
+  </header>
+
+  <section class="rg-section">
+    <h2>按鍵對照</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>按鍵</th><th>A 車（夾車）</th><th>B 車（推扒車）</th></tr></thead>
+        <tbody>
+          <tr><td><strong>搖桿 前後</strong></td><td>前進／後退（類比，推越多越快）</td><td>同左</td></tr>
+          <tr><td><strong>搖桿 左右</strong></td><td>轉向（大幅轉向用）</td><td>同左</td></tr>
+          <tr><td><strong>E / C</strong></td><td>升降 上／下</td><td>耙子 上／下</td></tr>
+          <tr><td><strong>F / D</strong></td><td>左／右微調（固定小轉速）</td><td>同左</td></tr>
+          <tr><td><strong>A / B</strong></td><td>夾爪 張開／閉合</td><td>閘門 關／開</td></tr>
+          <tr><td><strong>按下搖桿</strong></td><td>慢速模式（按著時有效）</td><td>同左</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>按鍵可以同時按，例如一邊前進一邊升降。</p>
+  </section>
+
+  <section class="rg-section">
+    <h2>對位技巧</h2>
+    <ul>
+      <li><strong>F / D 微調比推搖桿準。</strong>微調的轉速固定（35%），按幾下就轉幾次同樣的量，很快就能建立手感。微調時會取代搖桿的轉向，前後仍照搖桿走，可以一邊往前開一邊微調方向。</li>
+      <li><strong>點一下也會轉。</strong>點一下馬上放，微調仍會持續 0.12 秒才停，不會「點太快所以車子沒反應」；按住則一直轉。</li>
+      <li><strong>機構在動時自動降速。</strong>升降、夾爪動作或微調時，行走速度自動降到 45%，對位比較穩。按下搖桿也會進入同樣的慢速。</li>
+      <li><strong>起步不會暴衝。</strong>行走指令有加速斜坡，搖桿推到底也是平順加速，可以保護電池、避免板子瞬間沒電重開。</li>
+    </ul>
+  </section>
+
+  <section class="rg-section">
+    <h2>畫面與震動</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>看到什麼</th><th>意思</th><th>怎麼辦</th></tr></thead>
+        <tbody>
+          <tr><td>車子、遙控器 中心恆亮</td><td>連線正常</td><td>—</td></tr>
+          <tr><td>車子中心閃爍</td><td>失聯，馬達已全停（閘門維持原狀）</td><td>確認遙控器有開、拿對支</td></tr>
+          <tr><td>遙控器閃爍＋每 2.5 秒震動</td><td>收不到車子的回應，或車子配對的是別支遙控器</td><td>確認車子有開、有電；拿回自己那支</td></tr>
+          <tr><td>畫面出現 <code>L</code></td><td>開機時按著 A＋B，進入「頻段鎖定」模式</td><td>關機、手放開再開機</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rg-callout rg-callout-warn">
+      <strong>頻段鎖定（L）只在主辦要求使用固定頻段時才用。</strong>遙控器和車子都要按住 A＋B 開機才會一起進入，只有一邊是 L 會連不上。
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>為什麼別隊的遙控器控制不了你的車</h2>
+    <p>KSB 遙控器用 2.4GHz 無線廣播，全場的遙控器都在空中送訊號，所以程式用三層把別人擋掉：</p>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>層</th><th>做法</th><th>擋掉什麼</th></tr></thead>
+        <tbody>
+          <tr><td>頻段</td><td>每支遙控器依晶片序號自動選一個頻段（避開 WiFi 常用頻道）</td><td>大部分別隊的訊號，晶片直接不收</td></tr>
+          <tr><td>封包名稱</td><td>只收名稱是 <code>R4</code> 的封包</td><td>格式不同的其他程式</td></tr>
+          <tr><td><strong>配對</strong></td><td>車子只認配對過的那支遙控器序號</td><td><strong>別人的遙控器（真正的隔離靠這一層）</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>所以配對時旁邊不能開著別支遙控器，配完一定要做交叉測試。</p>
+  </section>
+
+  <!-- rg-footer:start -->
+<footer class="rg-footer">
+  <div>車城自造教育科技中心 · 2027 世界機關王 R4M 基礎組程式說明站（更新日期：2026-10-31）</div>
+  <div><a href="index.html">回說明站首頁</a> · <a href="https://ccmtc.mooo.com/">回科技中心官網</a></div>
+</footer>
+<!-- rg-footer:end -->
+</main>
+
+<script src="assets/rg.js?v=89f66e89"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>C 車 循跡取料｜機關王 R4M 程式說明站</title>
+  <!-- rg-early:start -->
+<script>
+(function(){try{
+  var t=localStorage.getItem('rg-theme');
+  if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+  var fs=localStorage.getItem('rg-fs');
+  if(fs==='0.92'||fs==='1'||fs==='1.12')document.documentElement.style.setProperty('--fs-user',fs);
+}catch(e){}})();
+</script>
+<!-- rg-early:end -->
+  <link rel="stylesheet" href="assets/rg.css?v=0ee58b4a">
+</head>
+<body>
+
+<!-- rg-nav:start（共用頁首，由 build/build_site.py 自動注入，勿手改） -->
+<header class="rg-header">
+  <div class="rg-header-inner">
+    <div class="rg-brand-row">
+      <a class="rg-brand" href="index.html">🚜 機關王 R4M 程式說明站</a>
+      <span class="rg-bread-sep">/</span>
+      <span class="rg-bread-here">C 車 循跡取料</span>
+    </div>
+    <div class="rg-tools">
+      <div class="rg-tool-group" role="group" aria-label="字級調整">
+        <button type="button" class="rg-tool-btn" data-rg-fs="0.92" aria-pressed="false" title="縮小字級">A－</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-fs="1" aria-pressed="true" title="標準字級">A</button>
+        <button type="button" class="rg-tool-btn" data-rg-fs="1.12" aria-pressed="false" title="放大字級">A＋</button>
+      </div>
+      <div class="rg-tool-group" role="group" aria-label="顯示模式">
+        <button type="button" class="rg-tool-btn" data-rg-theme="light" aria-pressed="false">淺色</button>
+        <button type="button" class="rg-tool-btn" data-rg-theme="dark" aria-pressed="false">深色</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-theme="auto" aria-pressed="true">自動</button>
+      </div>
+    </div>
+  </div>
+  <nav class="rg-nav-bar" aria-label="全站導覽">
+    <div class="rg-nav-scroll">
+      <a class="rg-nav-link" data-rg-page="index.html" href="index.html">首頁</a>
+      <a class="rg-nav-link" data-rg-page="prepare.html" href="prepare.html">上場前準備</a>
+      <a class="rg-nav-link" data-rg-page="pairing.html" href="pairing.html">設定與配對</a>
+      <a class="rg-nav-link" data-rg-page="ksb.html" href="ksb.html">KSB 搖桿</a>
+      <a class="rg-nav-link" data-rg-page="v7rc.html" href="v7rc.html">手機 V7RC</a>
+      <a class="rg-nav-link is-current" aria-current="page" data-rg-page="ccar.html" href="ccar.html">C 車循跡</a>
+      <a class="rg-nav-link" data-rg-page="faq.html" href="faq.html">常見問題</a>
+      <a class="rg-nav-link" data-rg-page="tech.html" href="tech.html">老師專區</a>
+    </div>
+  </nav>
+</header>
+<!-- rg-nav:end -->
+
+<main class="rg-wrap">
+  <header class="rg-mast">
+    <p class="rg-kicker">C ROBOT · LINE FOLLOWING · AUTONOMOUS</p>
+    <h1>C 車 循跡取料</h1>
+    <p class="rg-dek">C 車在比賽中不能遙控。按下 B 之後，它會自己沿黑線把飼料送到對應顏色的放置區。</p>
+  </header>
+
+  <section class="rg-section">
+    <h2>一、任務與計分</h2>
+    <p>C 車必須裝循跡感應器（1247-W85-B3 或 1409-W85-D），用程式自主運作，把紅、綠、藍三種飼料從「飼料暫放區」沿黑線運到對應顏色的放置區。飼料的正投影要在框線或圖案內才算分，不可以用手把飼料放到車上啟動。</p>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>飼料</th><th>數量</th><th>每個</th><th>小計</th></tr></thead>
+        <tbody>
+          <tr><td>紅色 → 紅色放置區</td><td>16</td><td>15 分</td><td>240 分</td></tr>
+          <tr><td>綠色 → 綠色放置區</td><td>10</td><td>20 分</td><td>200 分</td></tr>
+          <tr><td>藍色 → 藍色放置區</td><td>6</td><td>10 分</td><td>60 分</td></tr>
+          <tr><td>放錯顏色區</td><td>—</td><td>5 分</td><td>—</td></tr>
+          <tr><td>三色全部送對</td><td>—</td><td>—</td><td>加 100 分，滿分 600</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>運送途中失敗或沒進得分區，可以把沒得分的飼料拿回暫放區，再讓 C 車重跑。程式可以在比賽中修改、重新上傳，但時間照算。</p>
+  </section>
+
+  <section class="rg-section">
+    <h2>二、場地與路線</h2>
+    <div class="rg-grid-2">
+      <div class="rg-svg-wrap"><img src="assets/img/r4m-basic-map.jpg" alt="R4M 基礎組場地底圖：中央黑色循跡環線，左側島形 C 車出發區，紅、綠、藍放置區分別在環線上方、右側與下方" width="500" style="max-width:100%;height:auto"></div>
+      <div>
+        <p>中央的黑色環線就是 C 車的路。左側島形框是 C 車出發區，飼料暫放區在它的左邊（西邊）。環線上有三條橫線，分別在三個放置區旁邊：</p>
+        <ul>
+          <li><strong>上方橫線</strong>：紅色放置區</li>
+          <li><strong>右側橫線</strong>：綠色放置區</li>
+          <li><strong>下方橫線</strong>：藍色放置區</li>
+        </ul>
+        <p>程式跑兩趟：</p>
+        <ol>
+          <li><strong>第一趟（紅色）</strong>：在出發區取料 → 往北順時針走 → 停在上方橫線 → 右轉進紅色放置區卸料 → 原地迴轉，循線回到出發區。</li>
+          <li><strong>第二趟（藍＋綠）</strong>：再取料 → 往南逆時針走 → 停在下方橫線卸藍色 → 繼續走到右側橫線卸綠色 → 完成，畫面顯示 ✓。</li>
+        </ol>
+        <p>先送紅色，是因為紅色總分最高（240 分）。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>三、按鍵與畫面</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>操作</th><th>作用</th></tr></thead>
+        <tbody>
+          <tr><td>按 <strong>B</strong></td><td>開始任務（車子要先放在出發區、車頭朝北）</td></tr>
+          <tr><td>按 <strong>A</strong></td><td><strong>急停</strong>：馬上停車、閘門關上，畫面顯示 ✗</td></tr>
+          <tr><td><strong>搖一搖</strong>車子</td><td>感測器檢查模式（15 秒）：畫面左、中、右三格會跟著三顆感測器亮，壓到黑線就亮</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>畫面</th><th>意思</th></tr></thead>
+        <tbody>
+          <tr><td>笑臉</td><td>開機完成，等你按 B</td></tr>
+          <tr><td><code>1</code> / <code>2</code> / <code>3</code></td><td>目前進度：1＝第一趟、2＝紅色卸完、3＝回到出發區準備第二趟</td></tr>
+          <tr><td>✓</td><td>任務完成</td></tr>
+          <tr><td><code>T</code></td><td>逾時：一段路走了 20 秒還沒看到橫線，車子已停</td></tr>
+          <tr><td><code>L</code></td><td>找不到線（Lost），車子已停</td></tr>
+          <tr><td>✗</td><td>按了 A 急停</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>四、參數在哪裡改</h2>
+    <p>所有要在場地上實測的數字都放在程式最上面的參數區。改完重新下載燒錄即可。</p>
+    <h3>腳位與方向</h3>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>參數</th><th>預設</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><code>PIN_S_L / PIN_S_C / PIN_S_R</code></td><td>P8 / P12 / P2</td><td>左、中、右循跡感應器的腳位，依主控盒實際接線修改</td></tr>
+          <tr><td><code>有中央感測器</code></td><td>true</td><td>只裝兩顆感應器時改成 false（建議裝三顆，才偵測得到完全脫線）</td></tr>
+          <tr><td><code>黑</code></td><td>1</td><td>壓到黑線時讀到的值；搖一搖檢查時亮暗相反，就改成 0</td></tr>
+          <tr><td><code>L_正轉 / R_正轉</code></td><td>1 / 1</td><td>某一輪往後轉就把那一輪改成 0</td></tr>
+          <tr><td><code>PIN_GATE</code></td><td>P1</td><td>料斗閘門伺服馬達的腳位</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>速度</h3>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>參數</th><th>預設</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><code>V_直行</code></td><td>380</td><td>循跡時的基礎速度（0～1023）</td></tr>
+          <tr><td><code>V_慢</code></td><td>260</td><td>取料、進區、找線的慢速；所有「走幾公分」都用這個速度</td></tr>
+          <tr><td><code>V_轉外 / V_轉內</code></td><td>520 / −160</td><td>偏離黑線時外側輪、內側輪的速度（內側負值＝倒轉，修正得更急）</td></tr>
+          <tr><td><code>V_原地</code></td><td>330</td><td>原地旋轉的速度</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>里程與轉角校正（最重要）</h3>
+    <p>C 車沒有編碼器，「走幾公分」「轉幾度」都是用時間換算的。<strong>換電池、換輪子、換場地後都要重新量</strong>。</p>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>參數</th><th>預設</th><th>怎麼量</th></tr></thead>
+        <tbody>
+          <tr><td><code>MS_每公分</code></td><td>38</td><td>讓車以 <code>V_慢</code> 直行 3000 毫秒，量走了幾公分 D，<code>MS_每公分 = 3000 ÷ D</code></td></tr>
+          <tr><td><code>MS_每度</code></td><td>7</td><td>讓車以 <code>V_原地</code> 原地轉 2000 毫秒，看轉了幾度 A，<code>MS_每度 = 2000 ÷ A</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>取料與卸料</h3>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>參數</th><th>預設</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><code>取料前進 / 取料後退</code></td><td>14 / 15 cm</td><td>車頭轉向西後往前衝多少把飼料收進料斗、再退多少回到出發區</td></tr>
+          <tr><td><code>紅_微調 / 綠_微調 / 藍_微調</code></td><td>0</td><td>停在橫線後先前進（＋）或後退（−）幾公分再轉彎，用來對準各放置區的中心</td></tr>
+          <tr><td><code>進區距離</code></td><td>6 cm</td><td>轉向放置區後再前進多少</td></tr>
+          <tr><td><code>退出距離</code></td><td>22 cm</td><td>卸完往後退多少。前方開口的推箱式料斗要大於料斗深度，飼料才留得在區內</td></tr>
+          <tr><td><code>閘_關 / 閘_紅 / 閘_綠 / 閘_藍</code></td><td>2400 / 1800 / 1400 / 1000</td><td>閘門伺服的脈衝寬度（微秒），依料斗實際結構實測</td></tr>
+          <tr><td><code>逾時_毫秒</code></td><td>20000</td><td>一段路超過這個時間還沒看到橫線就停車，顯示 T</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rg-callout rg-callout-ok">
+      <strong>微調值怎麼算：</strong>車子停在橫線上時，料斗中心在「橫線後方、感測器到料斗中心的距離」那裡。<br>
+      微調值 ＝ 想讓料斗中心停的位置 − 橫線位置 ＋ 感測器到料斗的距離（先量自己的車：循跡感測器到料斗中心的前後距離）。
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>五、第一次上場地的調整順序</h2>
+    <ol>
+      <li><strong>搖一搖檢查感測器</strong>：三顆都要能分辨黑線和白底。亮暗相反就改 <code>黑</code>。</li>
+      <li><strong>輪子架空按 B</strong>：兩輪都要往前轉，反了改 <code>L_正轉 / R_正轉</code>。</li>
+      <li><strong>量 <code>MS_每公分</code> 和 <code>MS_每度</code></strong>，填回程式。</li>
+      <li><strong>只跑第一趟</strong>：看取料是否收得到飼料、紅色區卸得準不準，調 <code>取料前進</code>、<code>紅_微調</code>、<code>進區距離</code>。</li>
+      <li><strong>跑完整任務</strong>：再調藍、綠的微調值與閘門角度。</li>
+      <li>每次改了什麼、改成多少，記在紙上；比賽現場改程式時間照算，準備好的數字可以直接填。</li>
+    </ol>
+    <div class="rg-callout rg-callout-warn">
+      <strong>硬體限制：</strong>micro:bit V1 同時只能輸出 3 路 PWM，兩顆馬達加一顆閘門伺服剛好用滿；要加第二顆伺服請改用 V2 並實測。比賽規定 C 車主控盒須用 1269-W85-A1 或 1409-W85-A。
+    </div>
+  </section>
+
+  <!-- rg-footer:start -->
+<footer class="rg-footer">
+  <div>車城自造教育科技中心 · 2027 世界機關王 R4M 基礎組程式說明站（更新日期：2026-10-31）</div>
+  <div><a href="index.html">回說明站首頁</a> · <a href="https://ccmtc.mooo.com/">回科技中心官網</a></div>
+</footer>
+<!-- rg-footer:end -->
+</main>
+
+<script src="assets/rg.js?v=89f66e89"></script>
+</body>
+</html>

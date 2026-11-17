@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>上場前準備｜機關王 R4M 程式說明站</title>
+  <!-- rg-early:start -->
+<script>
+(function(){try{
+  var t=localStorage.getItem('rg-theme');
+  if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+  var fs=localStorage.getItem('rg-fs');
+  if(fs==='0.92'||fs==='1'||fs==='1.12')document.documentElement.style.setProperty('--fs-user',fs);
+}catch(e){}})();
+</script>
+<!-- rg-early:end -->
+  <link rel="stylesheet" href="assets/rg.css?v=0ee58b4a">
+</head>
+<body>
+
+<!-- rg-nav:start（共用頁首，由 build/build_site.py 自動注入，勿手改） -->
+<header class="rg-header">
+  <div class="rg-header-inner">
+    <div class="rg-brand-row">
+      <a class="rg-brand" href="index.html">🚜 機關王 R4M 程式說明站</a>
+      <span class="rg-bread-sep">/</span>
+      <span class="rg-bread-here">上場前準備</span>
+    </div>
+    <div class="rg-tools">
+      <div class="rg-tool-group" role="group" aria-label="字級調整">
+        <button type="button" class="rg-tool-btn" data-rg-fs="0.92" aria-pressed="false" title="縮小字級">A－</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-fs="1" aria-pressed="true" title="標準字級">A</button>
+        <button type="button" class="rg-tool-btn" data-rg-fs="1.12" aria-pressed="false" title="放大字級">A＋</button>
+      </div>
+      <div class="rg-tool-group" role="group" aria-label="顯示模式">
+        <button type="button" class="rg-tool-btn" data-rg-theme="light" aria-pressed="false">淺色</button>
+        <button type="button" class="rg-tool-btn" data-rg-theme="dark" aria-pressed="false">深色</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-theme="auto" aria-pressed="true">自動</button>
+      </div>
+    </div>
+  </div>
+  <nav class="rg-nav-bar" aria-label="全站導覽">
+    <div class="rg-nav-scroll">
+      <a class="rg-nav-link" data-rg-page="index.html" href="index.html">首頁</a>
+      <a class="rg-nav-link is-current" aria-current="page" data-rg-page="prepare.html" href="prepare.html">上場前準備</a>
+      <a class="rg-nav-link" data-rg-page="pairing.html" href="pairing.html">設定與配對</a>
+      <a class="rg-nav-link" data-rg-page="ksb.html" href="ksb.html">KSB 搖桿</a>
+      <a class="rg-nav-link" data-rg-page="v7rc.html" href="v7rc.html">手機 V7RC</a>
+      <a class="rg-nav-link" data-rg-page="ccar.html" href="ccar.html">C 車循跡</a>
+      <a class="rg-nav-link" data-rg-page="faq.html" href="faq.html">常見問題</a>
+      <a class="rg-nav-link" data-rg-page="tech.html" href="tech.html">老師專區</a>
+    </div>
+  </nav>
+</header>
+<!-- rg-nav:end -->
+
+<main class="rg-wrap">
+  <header class="rg-mast">
+    <p class="rg-kicker">PREPARE · FLASH · CHECKLIST</p>
+    <h1>上場前準備</h1>
+    <p class="rg-dek">燒錄程式、安裝擴充套件、賽前檢查。比賽前一天在教室做完，到會場只要開機驗收。</p>
+  </header>
+
+  <section class="rg-section">
+    <h2>一、每台車燒哪支程式</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>燒在哪裡</th><th>程式檔</th><th>要先裝的擴充套件</th></tr></thead>
+        <tbody>
+          <tr><td>A 車或 B 車（用 KSB 搖桿時）</td><td><code>04_KSB_車端_AB通用_v2.ts</code></td><td>flashstorage（radio 新專案預設就有）</td></tr>
+          <tr><td>KSB 遙控器</td><td><code>03_KSB發射端_搖桿_v2.ts</code></td><td>KSB045（radio 預設就有）</td></tr>
+          <tr><td>A 車或 B 車（用手機 V7RC 時）</td><td><code>01_V7RC_車端_AB通用_低延遲版.ts</code></td><td>V7RC、flashstorage</td></tr>
+          <tr><td>C 車</td><td><code>R4M_C車_循跡取料_2027.ts</code></td><td>不需要</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rg-callout rg-callout-warn">
+      <strong>KSB 遙控器和 KSB 車端要用同一批下載的程式。</strong>兩邊的封包格式要一致才連得上，換其中一邊時，另一邊也一起換成本站下載的版本。
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>二、擴充套件</h2>
+    <p>在 MakeCode 點「擴充功能」，把下面的網址貼進搜尋框。<strong>貼程式之前就要裝好</strong>，沒裝會出現 <code>Cannot find name 'xxx'</code> 的紅字。</p>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>擴充套件</th><th>搜尋框貼上</th><th>注意</th></tr></thead>
+        <tbody>
+          <tr><td>V7RC</td><td><code>github:lioujj/pxt-V7RC</code></td><td>會跳出「要移除 radio」→ 按確定（藍牙和 radio 不能同時用）。<strong>手機遙控一定要裝這個，不能只裝 bluetooth</strong>，否則手機找不到車子</td></tr>
+          <tr><td>KSB045</td><td><code>github:lioujj/pxt-KSB045</code></td><td>只有 KSB 遙控器要裝</td></tr>
+          <tr><td>flashstorage</td><td><code>github:bsiever/microbit-pxt-flashstorage</code></td><td>車子端要裝，用來記住車編號、主控盒和配對</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>擴充套件加進專案後會跟著專案存，比賽現場沒網路也能編譯；但<strong>第一次加入要有網路</strong>。</p>
+  </section>
+
+  <section class="rg-section">
+    <h2>三、燒錄步驟</h2>
+    <ol>
+      <li>打開 MakeCode for micro:bit，建立新專案。</li>
+      <li>依上表裝好擴充套件。</li>
+      <li>切到上方的 <strong>JavaScript</strong> 分頁，全選、刪除原本的內容。</li>
+      <li>用文字編輯器打開下載的 <code>.ts</code> 檔，全選複製，貼進 MakeCode。</li>
+      <li>確認沒有紅字後按「下載」，把產生的 <code>.hex</code> 拖進 micro:bit 的磁碟（或用 USB 直接燒錄）。</li>
+      <li><strong>車子重新燒錄後，車編號、主控盒和配對都要重做</strong>（見<a href="pairing.html">設定與配對</a>）。</li>
+    </ol>
+  </section>
+
+  <section class="rg-section">
+    <h2>四、賽前檢查清單</h2>
+    <p>勾選狀態會記在這支手機的瀏覽器裡，換頁不會不見。</p>
+    <h3>前一天（在教室）</h3>
+    <div class="rg-check-list">
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d1">
+        <div>
+          <strong>兩台車的車編號、主控盒都設對</strong>
+          <p>開機時畫面先顯示車編號，再捲出主控盒號碼（1269 或 1409），和設定卡一致。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d2">
+        <div>
+          <strong>兩組都完成配對，並做過交叉測試</strong>
+          <p>各隊錯開時間配對；別支遙控器按了，自己的車不能動。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d3">
+        <div>
+          <strong>每台車單獨通電，每個動作都試過</strong>
+          <p>前進、後退、左右轉、升降（耙子）、夾爪（閘門）都要會動。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d4">
+        <div>
+          <strong>方向測試</strong>
+          <p>搖桿往前車子往前、往右車子往右轉。方向反了不要自己改，告訴老師。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d5">
+        <div>
+          <strong>失效保護測試</strong>
+          <p>直接關掉遙控器電源，車子要在 0.3 秒內停下、畫面中心開始閃爍。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d6">
+        <div>
+          <strong>電池全部充飽，備用電池也充飽並貼標籤</strong>
+          <p>電量不足是比賽中最常見的「怪問題」來源。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d7">
+        <div>
+          <strong>車子和它配對的遙控器貼上同一個編號</strong>
+          <p>避免上場時拿錯遙控器。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="d8">
+        <div>
+          <strong>C 車：在練習場地跑完一次完整任務</strong>
+          <p>確認三個放置區都卸得準；參數改過要記在紙上。</p>
+        </div>
+      </label>
+    </div>
+    <h3>進場前 10 分鐘</h3>
+    <div class="rg-check-list">
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="m1">
+        <div>
+          <strong>開機看畫面</strong>
+          <p>車編號、主控盒是不是你預期的。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="m2">
+        <div>
+          <strong>交叉測試</strong>
+          <p>用 A 組遙控器去按，B 車不可以有任何反應；反過來也一樣。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="m3">
+        <div>
+          <strong>機構歸零</strong>
+          <p>夾爪張開、升降降到底、閘門關閉。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="m4">
+        <div>
+          <strong>換上剛充飽的電池</strong>
+          <p>換完重新確認畫面顯示沒有跑掉。</p>
+        </div>
+      </label>
+      <label class="rg-check-item">
+        <input type="checkbox" data-rg-check="m5">
+        <div>
+          <strong>C 車：搖一搖檢查三顆感測器</strong>
+          <p>畫面出現 S 後，把車放在黑線上，左、中、右三格會跟著亮，確認三顆都讀得到黑線。</p>
+        </div>
+      </label>
+    </div>
+    <p><button type="button" class="rg-btn rg-btn-secondary" id="rg-checklist-reset">清除全部勾選</button></p>
+  </section>
+
+  <section class="rg-section">
+    <h2>五、比賽規則重點</h2>
+    <ul>
+      <li>每台車尺寸限 長 30 × 寬 20 cm，高度不限；比賽開始時三台車分別放在 A、B、C 車出發區（黑框外線範圍內）。</li>
+      <li>場地沒有外圍擋板，<strong>四個輪子都開出底圖範圍算違規</strong>，第一次口頭警告，第二次起扣 5 分。</li>
+      <li>未經裁判同意不得用手碰觸場內機器人或移動任務物件。</li>
+      <li>C 車只能用程式自主運作，比賽中可以修改程式重新上傳，但時間照算。</li>
+    </ul>
+  </section>
+
+  <!-- rg-footer:start -->
+<footer class="rg-footer">
+  <div>車城自造教育科技中心 · 2027 世界機關王 R4M 基礎組程式說明站（更新日期：2026-10-31）</div>
+  <div><a href="index.html">回說明站首頁</a> · <a href="https://ccmtc.mooo.com/">回科技中心官網</a></div>
+</footer>
+<!-- rg-footer:end -->
+</main>
+
+<script src="assets/rg.js?v=89f66e89"></script>
+</body>
+</html>

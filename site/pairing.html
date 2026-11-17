@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>A／B 車 設定與配對｜機關王 R4M 程式說明站</title>
+  <!-- rg-early:start -->
+<script>
+(function(){try{
+  var t=localStorage.getItem('rg-theme');
+  if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+  var fs=localStorage.getItem('rg-fs');
+  if(fs==='0.92'||fs==='1'||fs==='1.12')document.documentElement.style.setProperty('--fs-user',fs);
+}catch(e){}})();
+</script>
+<!-- rg-early:end -->
+  <link rel="stylesheet" href="assets/rg.css?v=0ee58b4a">
+</head>
+<body>
+
+<!-- rg-nav:start（共用頁首，由 build/build_site.py 自動注入，勿手改） -->
+<header class="rg-header">
+  <div class="rg-header-inner">
+    <div class="rg-brand-row">
+      <a class="rg-brand" href="index.html">🚜 機關王 R4M 程式說明站</a>
+      <span class="rg-bread-sep">/</span>
+      <span class="rg-bread-here">A／B 車 設定與配對</span>
+    </div>
+    <div class="rg-tools">
+      <div class="rg-tool-group" role="group" aria-label="字級調整">
+        <button type="button" class="rg-tool-btn" data-rg-fs="0.92" aria-pressed="false" title="縮小字級">A－</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-fs="1" aria-pressed="true" title="標準字級">A</button>
+        <button type="button" class="rg-tool-btn" data-rg-fs="1.12" aria-pressed="false" title="放大字級">A＋</button>
+      </div>
+      <div class="rg-tool-group" role="group" aria-label="顯示模式">
+        <button type="button" class="rg-tool-btn" data-rg-theme="light" aria-pressed="false">淺色</button>
+        <button type="button" class="rg-tool-btn" data-rg-theme="dark" aria-pressed="false">深色</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-theme="auto" aria-pressed="true">自動</button>
+      </div>
+    </div>
+  </div>
+  <nav class="rg-nav-bar" aria-label="全站導覽">
+    <div class="rg-nav-scroll">
+      <a class="rg-nav-link" data-rg-page="index.html" href="index.html">首頁</a>
+      <a class="rg-nav-link" data-rg-page="prepare.html" href="prepare.html">上場前準備</a>
+      <a class="rg-nav-link is-current" aria-current="page" data-rg-page="pairing.html" href="pairing.html">設定與配對</a>
+      <a class="rg-nav-link" data-rg-page="ksb.html" href="ksb.html">KSB 搖桿</a>
+      <a class="rg-nav-link" data-rg-page="v7rc.html" href="v7rc.html">手機 V7RC</a>
+      <a class="rg-nav-link" data-rg-page="ccar.html" href="ccar.html">C 車循跡</a>
+      <a class="rg-nav-link" data-rg-page="faq.html" href="faq.html">常見問題</a>
+      <a class="rg-nav-link" data-rg-page="tech.html" href="tech.html">老師專區</a>
+    </div>
+  </nav>
+</header>
+<!-- rg-nav:end -->
+
+<main class="rg-wrap">
+  <header class="rg-mast">
+    <p class="rg-kicker">SETUP · PAIRING · CHECK</p>
+    <h1>A／B 車 設定與配對</h1>
+    <p class="rg-dek">照著步驟做，一步都不要跳。畫面跟說明不一樣時，先停下來問老師。</p>
+  </header>
+
+  <section class="rg-section">
+    <h2>先搞懂兩個名詞</h2>
+    <ul>
+      <li><strong>車編號</strong>：A 或 B。A 是夾車，B 是推扒車。<strong>只有車子要設定</strong>，遙控器不用設定。</li>
+      <li><strong>配對</strong>：讓車子記住你這支遙控器。配對之後車子<strong>只聽這一支</strong>，別人的遙控器怎麼按都控制不了你的車。每支遙控器天生有一個獨一無二的晶片序號，車子記住的就是這個號碼。</li>
+    </ul>
+    <div class="rg-callout rg-callout-ok">
+      <strong>口訣：車子開機按住 B ＝ 設定，按住 A ＝ 配對，什麼都不按 ＝ 正常開車。遙控器直接開。</strong>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>開機前必記：三條規則</h2>
+    <ol>
+      <li><strong>遙控器開機時，不要碰搖桿。</strong>開機瞬間會記住搖桿放開時的位置當中心點；手壓著搖桿開機，車子之後會自己慢慢跑。</li>
+      <li><strong>開機時，步驟沒叫你按就什麼鍵都不要按。</strong>開機時按著按鍵會進入特殊模式。</li>
+      <li><strong>「按住不放」比「按一下」可靠。</strong>寫「按住 A」就是一直壓著，直到畫面出現該出現的東西才放開。</li>
+    </ol>
+  </section>
+
+  <section class="rg-section">
+    <h2>畫面燈號圖鑑</h2>
+    <p>micro:bit 正面有 5×5 個小燈。實心是亮、空心是暗、虛線圈是閃爍（圖形是示意，實際字型可能稍有不同）。</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:flex-start"><figure style="margin:0;text-align:center;width:120px"><svg viewBox="0 0 80 80" width="80" height="80" role="img" aria-label="連線正常"><circle cx="8" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="40" r="6" fill="var(--svg-wall)"/><circle cx="56" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/></svg><figcaption><strong>連線正常</strong><br>中心恆亮</figcaption></figure><figure style="margin:0;text-align:center;width:120px"><svg viewBox="0 0 80 80" width="80" height="80" role="img" aria-label="失聯"><circle cx="8" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="40" r="6" fill="none" stroke="var(--svg-wall)" stroke-width="2" stroke-dasharray="3 2"/><circle cx="56" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/></svg><figcaption><strong>失聯</strong><br>中心一亮一暗，車子已自動停止</figcaption></figure><figure style="margin:0;text-align:center;width:120px"><svg viewBox="0 0 80 80" width="80" height="80" role="img" aria-label="配對中（P）"><circle cx="8" cy="8" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="8" r="6" fill="var(--svg-wall)"/><circle cx="40" cy="8" r="6" fill="var(--svg-wall)"/><circle cx="56" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="24" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="24" r="6" fill="var(--svg-wall)"/><circle cx="72" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="40" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="40" r="6" fill="var(--svg-wall)"/><circle cx="40" cy="40" r="6" fill="var(--svg-wall)"/><circle cx="56" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="56" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="72" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/></svg><figcaption><strong>配對中（P）</strong><br>等遙控器</figcaption></figure><figure style="margin:0;text-align:center;width:120px"><svg viewBox="0 0 80 80" width="80" height="80" role="img" aria-label="成功（✓）"><circle cx="8" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="24" r="6" fill="var(--svg-wall)"/><circle cx="8" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="40" r="6" fill="var(--svg-wall)"/><circle cx="72" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="56" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="56" r="6" fill="var(--svg-wall)"/><circle cx="56" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="72" r="6" fill="var(--svg-wall)"/><circle cx="40" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/></svg><figcaption><strong>成功（✓）</strong><br>設定或配對完成</figcaption></figure><figure style="margin:0;text-align:center;width:120px"><svg viewBox="0 0 80 80" width="80" height="80" role="img" aria-label="失敗／取消（✗）"><circle cx="8" cy="8" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="8" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="8" r="6" fill="var(--svg-wall)"/><circle cx="8" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="24" r="6" fill="var(--svg-wall)"/><circle cx="40" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="24" r="6" fill="var(--svg-wall)"/><circle cx="72" cy="24" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="40" r="6" fill="var(--svg-wall)"/><circle cx="56" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="40" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="24" cy="56" r="6" fill="var(--svg-wall)"/><circle cx="40" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="56" r="6" fill="var(--svg-wall)"/><circle cx="72" cy="56" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="8" cy="72" r="6" fill="var(--svg-wall)"/><circle cx="24" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="40" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="56" cy="72" r="6" fill="var(--sunk)" stroke="var(--ink-2)" stroke-width="0.6"/><circle cx="72" cy="72" r="6" fill="var(--svg-wall)"/></svg><figcaption><strong>失敗／取消（✗）</strong><br>配對逾時或取消</figcaption></figure></div>
+  </section>
+
+  <section class="rg-section">
+    <h2>步驟一：遙控器開機</h2>
+    <ol>
+      <li>手不要碰搖桿、不要按任何鍵。</li>
+      <li>打開遙控器電源。</li>
+      <li>感覺震一下，就準備好了。遙控器沒有任何設定要做。</li>
+    </ol>
+  </section>
+
+  <section class="rg-section">
+    <h2>步驟二：設定車子</h2>
+    <p><strong>什麼時候要做</strong>：第一次使用、程式重新燒錄過。</p>
+    <ol>
+      <li><strong>按住 B 不放</strong>，同時打開車子電源。</li>
+      <li>畫面先出現字母、再捲出主控盒號碼，B 繼續按著。</li>
+      <li>看到畫面捲出 <code>CAR</code> 才放開 B（第一次使用會自動進入，不用按）。</li>
+      <li><strong>第 1 頁 CAR</strong>：等 <code>CAR</code> 捲完再按。夾車按 <strong>A</strong>，推扒車按 <strong>B</strong>。</li>
+      <li><strong>第 2 頁 BOX</strong>：等 <code>BOX</code> 捲完再按。主控盒 1269 按 <strong>A</strong>，1409 按 <strong>B</strong>。不知道是哪個就問老師，選錯車子會亂動。</li>
+      <li>畫面顯示你選的數字，接著出現 ✓，設定完成。<strong>接著做步驟三。</strong></li>
+    </ol>
+  </section>
+
+  <section class="rg-section">
+    <h2>步驟三：配對（KSB 搖桿版）</h2>
+    <p><strong>什麼時候要做</strong>：第一次使用（開機會自動出現 P）、程式重新燒錄過、換了一支遙控器。配對會記住，關機也不會忘；<strong>比賽前在教室配好</strong>，到會場直接開機就能用。</p>
+    <div class="rg-callout rg-callout-danger">
+      <strong>配對最重要的一條規則：車子配對時，附近只能開著「要配的那一支」遙控器。</strong>車子會跟第一個收到的遙控器配在一起，旁邊有別隊的遙控器開著就可能配錯。各隊輪流配對，輪到你時請其他人先把遙控器關掉。
+    </div>
+    <ol>
+      <li>車子先關機；確認附近其他遙控器都關了，自己的遙控器也先不要開。</li>
+      <li><strong>按住 A 不放</strong>，同時打開車子電源（從沒配對過的車子不用按，會自動進入）。</li>
+      <li>畫面出現字母、捲出主控盒號碼，A 繼續按著，看到 <strong>P</strong> 才放開。</li>
+      <li><strong>打開你的遙控器</strong>（手不要碰搖桿）。</li>
+      <li>一兩秒內出現 <strong>✓</strong>，然後畫面變成中心一個點，配對完成。不用推搖桿。</li>
+      <li><strong>馬上做步驟四的交叉測試</strong>，確認沒有配錯。</li>
+    </ol>
+    <h3>一直停在 P</h3>
+    <ul>
+      <li>以前配對過的車子：等 <strong>15 秒</strong>沒收到遙控器，會出現 ✗ 並自動取消，恢復原本配對的遙控器。</li>
+      <li>從沒配對過的車子：會一直停在 P 等遙控器。</li>
+    </ul>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>原因</th><th>處理</th></tr></thead>
+        <tbody>
+          <tr><td>遙控器沒開</td><td>打開遙控器</td></tr>
+          <tr><td>遙控器電池沒電</td><td>換電池</td></tr>
+          <tr><td>遙控器燒的程式和車子不是同一批</td><td>請老師把遙控器重新燒成本站下載的程式</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>手機 V7RC 版不用配對遙控器，連線方式見<a href="v7rc.html">手機 V7RC 操作</a>。</p>
+  </section>
+
+  <section class="rg-section">
+    <h2>步驟四：驗收（每次上場前都要做）</h2>
+    <h3>① 看燈</h3>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>車子畫面</th><th>遙控器畫面</th><th>意思</th></tr></thead>
+        <tbody>
+          <tr><td>中心恆亮</td><td>中心恆亮</td><td>✅ 正常</td></tr>
+          <tr><td>停在 P</td><td>—</td><td>車子還沒配對，看步驟三</td></tr>
+          <tr><td>中心閃爍</td><td>閃爍＋震動</td><td>❌ 沒連上：遙控器沒開，或手上這支不是車子配對的那支</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>② 輪子架空測試</h3>
+    <p>把車子架高，輪子不要碰地：搖桿往前兩輪都往前轉、往右車子往右轉；E／C 鍵升降（或耙子）上下；F／D 鍵小小地左轉、右轉；A／B 鍵夾爪開合（A 車）或閘門開關（B 車）。方向不對<strong>不要自己改程式</strong>，告訴老師。</p>
+    <h3>③ 失效保護測試</h3>
+    <p><strong>直接關掉遙控器電源</strong>，車子要馬上停下來，畫面中心開始閃爍。關掉遙控器車子還在跑，<strong>不能上場</strong>，馬上找老師。</p>
+    <h3>④ 交叉測試（配對後一定要做）</h3>
+    <p>拿別隊（或另一組）的遙控器操作，你的車不可以有任何反應；再用自己的遙控器，只有你的車會動。別人的遙控器也控得到你的車，代表配錯了，重新配對。</p>
+  </section>
+
+  <section class="rg-section">
+    <h2>決賽模式（老師設定，選手不用動）</h2>
+    <p>決賽時老師會把車編號、主控盒直接寫進車子的程式裡，開機選單會被關掉：不管怎麼按 B 都不會進設定，避免比賽中誤按改掉設定。開機畫面一樣會顯示字母和數字，請照樣確認跟設定卡一致。</p>
+    <p><strong>配對仍然可以做</strong>（萬一比賽中要換備用遙控器）：按住 A 開機，出現 P 才放開，跟平常一樣；配對時附近其他遙控器要先關掉。</p>
+  </section>
+
+  <!-- rg-footer:start -->
+<footer class="rg-footer">
+  <div>車城自造教育科技中心 · 2027 世界機關王 R4M 基礎組程式說明站（更新日期：2026-10-31）</div>
+  <div><a href="index.html">回說明站首頁</a> · <a href="https://ccmtc.mooo.com/">回科技中心官網</a></div>
+</footer>
+<!-- rg-footer:end -->
+</main>
+
+<script src="assets/rg.js?v=89f66e89"></script>
+</body>
+</html>

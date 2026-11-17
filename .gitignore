@@ -1,0 +1,24 @@
+# ── 機密檔案（絕對不可提交） ─────────────────────────
+.env
+.env.*
+.env.local
+.env.*.local
+
+# ── 系統與編輯器暫存 ─────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ── Python 編譯快取與建置暫存 ─────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+build/.tmp*
+
+# ── 大型二進位打包產物（可由 build/build_site.py 重建） ────
+site/downloads/r4m-guide-offline.zip
+._*
+.env
+*.tgz
+__pycache__/

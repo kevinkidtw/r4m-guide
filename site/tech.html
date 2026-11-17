@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>老師專區｜機關王 R4M 程式說明站</title>
+  <!-- rg-early:start -->
+<script>
+(function(){try{
+  var t=localStorage.getItem('rg-theme');
+  if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+  var fs=localStorage.getItem('rg-fs');
+  if(fs==='0.92'||fs==='1'||fs==='1.12')document.documentElement.style.setProperty('--fs-user',fs);
+}catch(e){}})();
+</script>
+<!-- rg-early:end -->
+  <link rel="stylesheet" href="assets/rg.css?v=0ee58b4a">
+</head>
+<body>
+
+<!-- rg-nav:start（共用頁首，由 build/build_site.py 自動注入，勿手改） -->
+<header class="rg-header">
+  <div class="rg-header-inner">
+    <div class="rg-brand-row">
+      <a class="rg-brand" href="index.html">🚜 機關王 R4M 程式說明站</a>
+      <span class="rg-bread-sep">/</span>
+      <span class="rg-bread-here">老師用 程式架構與調校</span>
+    </div>
+    <div class="rg-tools">
+      <div class="rg-tool-group" role="group" aria-label="字級調整">
+        <button type="button" class="rg-tool-btn" data-rg-fs="0.92" aria-pressed="false" title="縮小字級">A－</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-fs="1" aria-pressed="true" title="標準字級">A</button>
+        <button type="button" class="rg-tool-btn" data-rg-fs="1.12" aria-pressed="false" title="放大字級">A＋</button>
+      </div>
+      <div class="rg-tool-group" role="group" aria-label="顯示模式">
+        <button type="button" class="rg-tool-btn" data-rg-theme="light" aria-pressed="false">淺色</button>
+        <button type="button" class="rg-tool-btn" data-rg-theme="dark" aria-pressed="false">深色</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-theme="auto" aria-pressed="true">自動</button>
+      </div>
+    </div>
+  </div>
+  <nav class="rg-nav-bar" aria-label="全站導覽">
+    <div class="rg-nav-scroll">
+      <a class="rg-nav-link" data-rg-page="index.html" href="index.html">首頁</a>
+      <a class="rg-nav-link" data-rg-page="prepare.html" href="prepare.html">上場前準備</a>
+      <a class="rg-nav-link" data-rg-page="pairing.html" href="pairing.html">設定與配對</a>
+      <a class="rg-nav-link" data-rg-page="ksb.html" href="ksb.html">KSB 搖桿</a>
+      <a class="rg-nav-link" data-rg-page="v7rc.html" href="v7rc.html">手機 V7RC</a>
+      <a class="rg-nav-link" data-rg-page="ccar.html" href="ccar.html">C 車循跡</a>
+      <a class="rg-nav-link" data-rg-page="faq.html" href="faq.html">常見問題</a>
+      <a class="rg-nav-link is-current" aria-current="page" data-rg-page="tech.html" href="tech.html">老師專區</a>
+    </div>
+  </nav>
+</header>
+<!-- rg-nav:end -->
+
+<main class="rg-wrap">
+  <header class="rg-mast">
+    <p class="rg-kicker">FOR COACHES · ARCHITECTURE · TUNING</p>
+    <h1>老師專區：程式架構與調校</h1>
+    <p class="rg-dek">腳位、訊號隔離、可調常數、決賽鎖定與封包探測器。選手不需要看這一頁。</p>
+  </header>
+
+  <section class="rg-section">
+    <h2>一、兩套遙控的差別</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th></th><th>V7RC（手機）</th><th>KSB 搖桿（micro:bit radio）</th></tr></thead>
+        <tbody>
+          <tr><td>傳輸</td><td>BLE 藍牙，點對點連線</td><td>2.4GHz 廣播</td></tr>
+          <tr><td>別校干擾</td><td>不會（手機獨佔一台車）</td><td>會，靠頻段、封包名、配對三層隔離</td></tr>
+          <tr><td>現場的問題</td><td>「哪一台是我的」→ 按 A 看藍牙名稱</td><td>「別人的訊號會進來」→ 配對＋交叉測試</td></tr>
+          <tr><td>同一支程式並用</td><td>不行：MakeCode 啟用藍牙後 radio 會被移除</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>二、主控盒腳位</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>主控盒</th><th>左輪（方向／速度）</th><th>右輪</th><th>機構 1</th><th>機構 2</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1269</strong></td><td>P13 / P14</td><td>P15 / P16</td><td>P12 / P2</td><td>P1 / P8</td></tr>
+          <tr><td><strong>1409</strong></td><td>P15 / P14</td><td>P0 / P16</td><td>P13 / P8</td><td>P2 / P1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>兩組腳位表都內建在程式裡，開機選單選主控盒即可切換。</li>
+      <li>第 4 組馬達的速度腳在 B 車就是閘門伺服腳（1269 → P8，1409 → P1）。B 車不驅動第 4 組，那支腳就是乾淨的伺服腳，不必改接線。</li>
+      <li>B 車實際使用 3 馬達＋1 伺服＝4 路 PWM，剛好是 micro:bit V2 的上限。</li>
+      <li><strong>micro:bit 所有 PWM 輸出共用同一個頻率</strong>，車上有伺服就不能改 PWM 頻率。兩台車都使用預設 50Hz。</li>
+    </ul>
+  </section>
+
+  <section class="rg-section">
+    <h2>三、馬達方向預設值</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>組合</th><th>狀態</th></tr></thead>
+        <tbody>
+          <tr><td>1409 ＋ V7RC</td><td>✔ 實車驗證</td></tr>
+          <tr><td>1269 ＋ V7RC</td><td>✔ 實車驗證</td></tr>
+          <tr><td>1269 ＋ KSB 搖桿</td><td>✔ 與實際輸出逐項比對一致</td></tr>
+          <tr><td>1409 ＋ KSB 搖桿</td><td>⚠ 由上面三項推得，<strong>第一次試車要確認</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>兩種主控盒的輪子方向其實一樣，差別在遙控器：KSB 搖桿往上推數值變小，V7RC 往上推數值變大。所以 V7RC 版兩組都是 <code>[true, false, …]</code>，KSB 版兩組都是 <code>[false, true, …]</code> 再加上 <code>反轉_轉向 = true</code>。某台盒子接線不同時，單獨改 <code>反轉_1269</code> 或 <code>反轉_1409</code>。</p>
+    <h3>第一次試車的順序</h3>
+    <ol>
+      <li>輪子架空。</li>
+      <li>搖桿往前：兩輪都要往前轉。哪一輪反了，改這台主控盒那一組的第 0 格（左）或第 1 格（右）。</li>
+      <li>搖桿往右：車子要往右轉，反了改 <code>反轉_轉向</code>。</li>
+      <li>機構鍵：升降與夾爪方向不對，改第 2 格／第 3 格。</li>
+      <li>落地跑一圈，再調 <code>曲線量</code> 和 <code>全域限速</code>。</li>
+    </ol>
+  </section>
+
+  <section class="rg-section">
+    <h2>四、可調常數（車端 01、04 共用）</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>常數</th><th>預設</th><th>什麼時候調</th></tr></thead>
+        <tbody>
+          <tr><td><code>死區</code></td><td>V7RC 8／KSB 6</td><td>手放開車子會微微動 → 調大（V7RC 搖桿交叉漂移實測可到 6.6）</td></tr>
+          <tr><td><code>曲線量</code></td><td>0.40</td><td>對位太敏感 → 調大到 0.5～0.6</td></tr>
+          <tr><td><code>全域限速</code></td><td>100 %</td><td>場地小、太快撞出界 → 調到 70～80</td></tr>
+          <tr><td><code>對位慢速</code></td><td>45 %</td><td>對位還是太快 → 調小</td></tr>
+          <tr><td><code>機構作動時降速</code></td><td>true</td><td>想邊走邊升降搶時間 → 改 false</td></tr>
+          <tr><td><code>微調轉速</code></td><td>35 %</td><td>微調轉不動 → 調大；一下轉太多 → 調小</td></tr>
+          <tr><td><code>微調最短毫秒</code></td><td>120</td><td>點按沒反應 → 調大到 150～200</td></tr>
+          <tr><td><code>微調覆蓋搖桿</code></td><td>true</td><td>想邊走邊用搖桿轉向又同時微調 → 改 false</td></tr>
+          <tr><td><code>方向鍵門檻</code>（V7RC）</td><td>50</td><td>↖ ↗ 不好按、常變成升降 → 調小到 30</td></tr>
+          <tr><td><code>機構升速 / 機構降速</code></td><td>100 / 45～50 %</td><td>下降太快砸到東西 → 降速調小</td></tr>
+          <tr><td><code>夾爪力道</code></td><td>70 %</td><td>夾太用力打滑 → 調小</td></tr>
+          <tr><td><code>斜率</code></td><td>12</td><td>起步頓一下、板子重開 → 調小到 8</td></tr>
+          <tr><td><code>馬達最低</code></td><td>190</td><td>低速時馬達不會轉 → 調大</td></tr>
+          <tr><td><code>閘門角_關 / 閘門角_開</code></td><td>0 / 100</td><td>閘門沒關緊或頂到 → 微調</td></tr>
+          <tr><td><code>斷線毫秒</code></td><td>300</td><td>沒收到封包超過這麼久就全停</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>五、決賽鎖定</h2>
+    <p>車端程式（01、04）最上面有一段鎖定設定。決賽前改成 <code>true</code> 並寫死車編號、主控盒，開機選單就不會被誤按改掉；配對入口仍保留，方便臨時換遙控器。</p>
+    <div class="rg-svg-wrap"><pre>const 鎖定設定: boolean = false      // 決賽前改成 true
+const 鎖定_車編號: string = "A"      // "A" 或 "B"
+const 鎖定_主控盒: number = 1269     // 1269 或 1409</pre></div>
+    <p>型別標註（<code>: number</code>、<code>: string</code>）不能刪，刪掉後改值會編譯錯誤。</p>
+  </section>
+
+  <section class="rg-section">
+    <h2>六、KSB 訊號隔離細節</h2>
+    <ul>
+      <li>群組固定 173，封包名稱固定 <code>R4</code>，遙控器每 30ms 送一包，一包帶搖桿與 7 顆按鍵的完整狀態。</li>
+      <li>頻段由遙控器晶片序號算出：<code>((序號 ^ (序號 &gt;&gt; 16)) &amp; 0xFFFF) % 14</code>，對應 14 個避開 WiFi 1／6／11 與藍牙廣播頻道的頻段：22–24、48–51、72–78。</li>
+      <li>車子配對時每 120ms 換一個頻段輪流聽，2 秒內就能找到遙控器，記下序號後存 Flash。</li>
+      <li>車子每 500ms 回報一次給遙控器；遙控器 1.2 秒沒收到就震動警告。</li>
+      <li>主辦要求固定頻段時，遙控器與車子都按住 A＋B 開機（顯示 L），全部固定在 band 7，配對照樣有效。</li>
+    </ul>
+  </section>
+
+  <section class="rg-section">
+    <h2>七、V7RC 封包與探測器</h2>
+    <p>Game ADV 介面送出 <code>SRT</code> 開頭、19 字元的封包，每秒約 33 包；四個通道 1000–1500–2000：通道 1 左搖桿左右、通道 2 左搖桿上下、通道 3 方向鍵上下、通道 4 方向鍵左右。放開時回到 <code>SRT1500150015001500</code>。</p>
+    <p>改用其他 V7RC 介面前，先燒 <code>06_V7RC封包探測器_GameADV用.ts</code>（<a href="downloads/06_V7RC封包探測器_GameADV用.ts" download>下載</a>）測一次通道順序與數值範圍，再改車端程式頂端的 <code>CH_</code> 通道設定。</p>
+  </section>
+
+  <section class="rg-section">
+    <h2>八、待實測項目</h2>
+    <ul>
+      <li>1409 ＋ KSB 搖桿的馬達方向。</li>
+      <li>B 車行走時閘門會不會抖、會不會自己動。</li>
+      <li>KSB 配對：兩隊錯開配對後的交叉測試，以及配對是否在 2 秒內完成。</li>
+      <li>V7RC 的 ↖ ↗ 好不好按；<code>微調轉速</code>、<code>微調最短毫秒</code> 依選手習慣微調。</li>
+      <li>C 車全部參數（里程、轉角、取料、卸料、閘門角度）都需要在場地上實測。</li>
+    </ul>
+  </section>
+
+  <!-- rg-footer:start -->
+<footer class="rg-footer">
+  <div>車城自造教育科技中心 · 2027 世界機關王 R4M 基礎組程式說明站（更新日期：2026-10-31）</div>
+  <div><a href="index.html">回說明站首頁</a> · <a href="https://ccmtc.mooo.com/">回科技中心官網</a></div>
+</footer>
+<!-- rg-footer:end -->
+</main>
+
+<script src="assets/rg.js?v=89f66e89"></script>
+</body>
+</html>

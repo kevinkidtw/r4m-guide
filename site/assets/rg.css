@@ -1,0 +1,1030 @@
+/* ==========================================================================
+   智創機器人程式說明站 (robot-guide) — 全站共用樣式 (rg.css)
+   規範鐵則：所有全域自訂 class 一律加 rg- 前綴；狀態 class 用 is-current
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --fs-user: 1;
+  --content-max: min(76rem, 100%);
+  --plane: #f4f6f8;
+  --card: #ffffff;
+  --sunk: #eef2f6;
+  --ink: #0f172a;
+  --ink-2: #334155;
+  --ink-3: #475569;
+  --rule: #cbd5e1;
+  --hair: #e2e8f0;
+  --accent: #1d4ed8;
+  --accent-strong: #1e40af;
+  --accent-ink: #1e3a8a;
+  --accent-soft: #eff6ff;
+  --warn: #b45309;
+  --warn-strong: #92400e;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+  --danger-strong: #991b1b;
+  --danger-soft: #fee2e2;
+  --ok: #15803d;
+  --ok-strong: #166534;
+  --ok-soft: #dcfce7;
+  --oled-bg: #090d16;
+  --oled-fg: #38bdf8;
+  --oled-fg2: #7dd3fc;
+  --oled-border: #334155;
+  --svg-bg: #f8fafc;
+  --svg-grid: #cbd5e1;
+  --svg-wall: #dc2626;
+  --svg-path: #1d4ed8;
+  --svg-start-bg: rgba(37, 99, 235, 0.14);
+  --svg-start-stroke: #1d4ed8;
+  --svg-target: #d97706;
+  --svg-gate: #15803d;
+  --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --plane: #0b0f17;
+    --card: #131b26;
+    --sunk: #1e293b;
+    --ink: #f1f5f9;
+    --ink-2: #cbd5e1;
+    --ink-3: #94a3b8;
+    --rule: #334155;
+    --hair: #1e293b;
+    --accent: #60a5fa;
+    --accent-strong: #1d4ed8;
+    --accent-ink: #1e3a8a;
+    --accent-soft: #172554;
+    --warn: #fbbf24;
+    --warn-strong: #b45309;
+    --warn-soft: #3b2506;
+    --danger: #f87171;
+    --danger-strong: #b91c1c;
+    --danger-soft: #3b1219;
+    --ok: #4ade80;
+    --ok-strong: #15803d;
+    --ok-soft: #0c2e1c;
+    --oled-bg: #05080f;
+    --oled-fg: #38bdf8;
+    --oled-fg2: #7dd3fc;
+    --oled-border: #475569;
+    --svg-bg: #0f172a;
+    --svg-grid: #1e293b;
+    --svg-wall: #f87171;
+    --svg-path: #60a5fa;
+    --svg-start-bg: rgba(96, 165, 250, 0.16);
+    --svg-start-stroke: #60a5fa;
+    --svg-target: #fbbf24;
+    --svg-gate: #4ade80;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.45), 0 10px 28px -12px rgba(0, 0, 0, 0.75);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --plane: #0b0f17;
+  --card: #131b26;
+  --sunk: #1e293b;
+  --ink: #f1f5f9;
+  --ink-2: #cbd5e1;
+  --ink-3: #94a3b8;
+  --rule: #334155;
+  --hair: #1e293b;
+  --accent: #60a5fa;
+  --accent-strong: #1d4ed8;
+  --accent-ink: #1e3a8a;
+  --accent-soft: #172554;
+  --warn: #fbbf24;
+  --warn-strong: #b45309;
+  --warn-soft: #3b2506;
+  --danger: #f87171;
+  --danger-strong: #b91c1c;
+  --danger-soft: #3b1219;
+  --ok: #4ade80;
+  --ok-strong: #15803d;
+  --ok-soft: #0c2e1c;
+  --oled-bg: #05080f;
+  --oled-fg: #38bdf8;
+  --oled-fg2: #7dd3fc;
+  --oled-border: #475569;
+  --svg-bg: #0f172a;
+  --svg-grid: #1e293b;
+  --svg-wall: #f87171;
+  --svg-path: #60a5fa;
+  --svg-start-bg: rgba(96, 165, 250, 0.16);
+  --svg-start-stroke: #60a5fa;
+  --svg-target: #fbbf24;
+  --svg-gate: #4ade80;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.45), 0 10px 28px -12px rgba(0, 0, 0, 0.75);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: calc(clamp(16px, 1rem + 0.25vw, 19px) * var(--fs-user));
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: var(--plane);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+:root[data-theme="dark"] a:hover {
+  color: #93c5fd;
+}
+
+code, kbd, .rg-code, .rg-kbd {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--sunk);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+pre, .rg-pre {
+  background: var(--sunk);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  overflow-x: auto;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  margin: 1rem 0;
+}
+
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* --- 共用頂部導覽列 (.rg-header) --- */
+.rg-header {
+  position: sticky;
+  top: 0;
+  z-index: 150;
+  background: var(--card);
+  border-bottom: 1px solid var(--rule);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.rg-header-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0.55rem clamp(0.75rem, 3vw, 1.75rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.rg-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.rg-brand {
+  font-weight: 900;
+  font-size: 0.98rem;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.rg-brand:hover {
+  color: var(--accent);
+}
+
+.rg-bread-sep {
+  color: var(--ink-3);
+  font-size: 0.85rem;
+}
+
+.rg-bread-here {
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rg-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.rg-tool-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--sunk);
+  border: 1px solid var(--rule);
+  border-radius: 99px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.rg-tool-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.22rem 0.55rem;
+  border-radius: 99px;
+  cursor: pointer;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.rg-tool-btn:hover {
+  color: var(--ink);
+  background: var(--hair);
+}
+
+.rg-tool-btn[aria-pressed="true"],
+.rg-tool-btn.is-current {
+  background: var(--accent-strong);
+  color: #ffffff;
+}
+
+.rg-tool-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.rg-nav-bar {
+  border-top: 1px solid var(--hair);
+  background: var(--plane);
+}
+
+.rg-nav-scroll {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0.35rem clamp(0.75rem, 3vw, 1.75rem);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.rg-nav-link {
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.rg-nav-link:hover {
+  background: var(--sunk);
+  color: var(--ink);
+}
+
+.rg-nav-link.is-current {
+  background: var(--accent-strong);
+  color: #ffffff;
+}
+
+/* --- 主容器與版面 (.rg-wrap) --- */
+.rg-wrap {
+  max-width: var(--content-max);
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3.5vw, 2.5rem) clamp(0.75rem, 3vw, 1.75rem) 4rem;
+}
+
+.rg-mast {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.rg-kicker {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+}
+
+.rg-mast h1 {
+  font-weight: 900;
+  font-size: clamp(1.55rem, 4vw, 2.45rem);
+  line-height: 1.22;
+  margin: 0 0 0.65rem;
+  color: var(--ink);
+}
+
+.rg-dek {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  color: var(--ink-2);
+  max-width: 68ch;
+  margin: 0;
+}
+
+.rg-section {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  max-width: 100%;
+}
+
+.rg-section h2 {
+  font-size: clamp(1.15rem, 2.2vw, 1.38rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid var(--hair);
+}
+
+.rg-section h3 {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 1.25rem 0 0.55rem;
+}
+
+.rg-section p {
+  margin: 0 0 0.85rem;
+}
+
+.rg-section ul, .rg-section ol {
+  margin: 0.4rem 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.rg-section li {
+  margin-bottom: 0.35rem;
+}
+
+/* --- 網格與分流卡片 (.rg-doors, .rg-grid-2) --- */
+.rg-doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.rg-door {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--accent-strong);
+  border-radius: 8px;
+  padding: 1.35rem 1.25rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.rg-door-warn {
+  border-top-color: var(--warn-strong);
+}
+
+.rg-door-ok {
+  border-top-color: var(--ok-strong);
+}
+
+.rg-door-who {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  margin-bottom: 0.25rem;
+}
+
+.rg-door h2, .rg-door h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin: 0 0 0.4rem;
+  border: 0;
+  padding: 0;
+}
+
+.rg-door-sub {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  margin: 0 0 1rem;
+}
+
+.rg-door-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
+  flex: 1;
+}
+
+.rg-door-list li {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--hair);
+  font-size: 0.92rem;
+}
+
+.rg-door-list li:first-child {
+  border-top: 0;
+}
+
+.rg-door-list a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rg-door-list a:hover {
+  text-decoration: underline;
+}
+
+.rg-door-list span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin-top: 0.15rem;
+}
+
+.rg-grid-2 {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .rg-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- 按鈕 (.rg-btn) 規範第七節：hover 一律變深而非變亮，對比度 ≥ 4.5:1 --- */
+.rg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #ffffff;
+  background: var(--accent-strong);
+  border: 1px solid var(--accent-strong);
+  padding: 0.6rem 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.rg-btn:hover {
+  background: var(--accent-ink);
+  border-color: var(--accent-ink);
+  color: #ffffff;
+}
+
+.rg-btn-secondary {
+  background: var(--sunk);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+
+.rg-btn-secondary:hover {
+  background: var(--rule);
+  color: var(--ink);
+}
+
+.rg-btn-warn {
+  background: var(--warn-strong);
+  border-color: var(--warn-strong);
+  color: #ffffff;
+}
+
+.rg-btn-warn:hover {
+  background: #78350f;
+  border-color: #78350f;
+  color: #ffffff;
+}
+
+.rg-btn-danger {
+  background: var(--danger-strong);
+  border-color: var(--danger-strong);
+  color: #ffffff;
+}
+
+.rg-btn-danger:hover {
+  background: #7f1d1d;
+  border-color: #7f1d1d;
+  color: #ffffff;
+}
+
+.rg-btn-ok {
+  background: var(--ok-strong);
+  border-color: var(--ok-strong);
+  color: #ffffff;
+}
+
+.rg-btn-ok:hover {
+  background: #14532d;
+  border-color: #14532d;
+  color: #ffffff;
+}
+
+/* --- 表格外框 (.rg-table-wrap) 手機橫向捲動保護 --- */
+.rg-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0.85rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+.rg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 300px;
+}
+
+.rg-table th,
+.rg-table td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  border-right: 1px solid var(--hair);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+
+.rg-table th:last-child,
+.rg-table td:last-child {
+  border-right: 0;
+}
+
+.rg-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.rg-table th {
+  background: var(--sunk);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+/* --- 提示框 (.rg-callout) --- */
+.rg-callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  color: var(--ink);
+  padding: 0.85rem 1rem;
+  border-radius: 0 6px 6px 0;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+  overflow-wrap: break-word;
+}
+
+.rg-callout-warn {
+  background: var(--warn-soft);
+  border-left-color: var(--warn);
+}
+
+.rg-callout-danger {
+  background: var(--danger-soft);
+  border-left-color: var(--danger);
+}
+
+.rg-callout-ok {
+  background: var(--ok-soft);
+  border-left-color: var(--ok);
+}
+
+/* --- 標籤 (.rg-badge) --- */
+.rg-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  background: var(--sunk);
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+.rg-badge-ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-color: var(--ok);
+}
+
+.rg-badge-warn {
+  background: var(--warn-soft);
+  color: var(--warn);
+  border-color: var(--warn);
+}
+
+.rg-badge-danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+/* --- OLED 螢幕元件与模擬器 (.rg-oled-*, .rg-sim-*) --- */
+.rg-sim-box {
+  background: #1e293b;
+  color: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 100%;
+}
+
+.rg-oled-frame {
+  background: #0f172a;
+  border: 3px solid var(--oled-border);
+  border-radius: 10px;
+  padding: 0.65rem;
+  max-width: 310px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rg-oled-caption {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+}
+
+.rg-oled-screen {
+  background: var(--oled-bg);
+  border: 1px solid #334155;
+  border-radius: 6px;
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0.65rem;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color: var(--oled-fg);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.38);
+  text-align: left;
+  overflow: hidden;
+}
+
+.rg-oled-line1 {
+  font-size: clamp(13px, 3.8vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.35rem;
+  white-space: nowrap;
+}
+
+.rg-oled-line2 {
+  font-size: clamp(14px, 4.2vw, 19px);
+  font-weight: 800;
+  text-align: center;
+  color: var(--oled-fg2);
+  white-space: nowrap;
+}
+
+.rg-sim-group-title {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.rg-sim-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.rg-sim-btn {
+  flex: 1 1 calc(50% - 0.35rem);
+  min-width: 115px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid #475569;
+  background: #334155;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  word-break: break-word;
+}
+
+.rg-sim-btn:hover {
+  background: #1e293b;
+  border-color: #64748b;
+}
+
+.rg-sim-btn-a { background: #1e40af; border-color: #3b82f6; }
+.rg-sim-btn-a:hover { background: #1e3a8a; }
+.rg-sim-btn-b { background: #92400e; border-color: #f59e0b; }
+.rg-sim-btn-b:hover { background: #78350f; }
+.rg-sim-btn-ab { background: #9f1239; border-color: #f43f5e; }
+.rg-sim-btn-ab:hover { background: #881337; }
+.rg-sim-btn-start { background: #166534; border-color: #22c55e; }
+.rg-sim-btn-start:hover { background: #14532d; }
+.rg-sim-btn-select { background: #5b21b6; border-color: #a855f7; }
+.rg-sim-btn-select:hover { background: #4c1d95; }
+.rg-sim-btn-warn { background: #9a3412; border-color: #fb923c; }
+.rg-sim-btn-warn:hover { background: #7c2d12; }
+
+.rg-sim-status {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.84rem;
+  color: #f1f5f9;
+  overflow-wrap: break-word;
+}
+
+/* --- 檢查清單項目 (.rg-check-item) --- */
+.rg-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem;
+}
+
+.rg-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  background: var(--plane);
+  cursor: pointer;
+}
+
+.rg-check-item input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: var(--accent-strong);
+  cursor: pointer;
+}
+
+.rg-check-item.is-checked {
+  background: var(--ok-soft);
+  border-color: var(--ok);
+}
+
+/* --- 下載清單 (.rg-dl-list) --- */
+.rg-dl-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.rg-dl-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--plane);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+.rg-dl-info {
+  min-width: 0;
+  flex: 1 1 220px;
+}
+
+.rg-dl-title {
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.rg-dl-desc {
+  font-size: 0.84rem;
+  color: var(--ink-2);
+  margin-top: 0.15rem;
+}
+
+/* --- SVG 容器 (.rg-svg-wrap) --- */
+.rg-svg-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+  text-align: center;
+}
+
+.rg-svg-wrap svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  background: var(--svg-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+/* 寬圖（狀態機）：手機上不縮小到看不清，改成固定最小寬度＋左右捲動 */
+.rg-svg-wrap--wide {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.rg-svg-wrap--wide svg {
+  min-width: 900px;
+  max-width: none;
+}
+
+.rg-svg-hint {
+  display: none;
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .rg-svg-hint { display: block; }
+}
+
+@media print {
+  .rg-svg-wrap--wide svg { min-width: 0; max-width: 100%; }
+  .rg-svg-hint { display: none; }
+}
+
+/* --- 頁尾 (.rg-footer) --- */
+.rg-footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+/* --- A6 口袋卡列印版面 (.rg-pocket-grid, .rg-pocket-card) --- */
+.rg-pocket-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1.25rem;
+}
+
+.rg-pocket-card {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.rg-pocket-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 0.25rem;
+}
+
+.rg-blank-box {
+  display: inline-block;
+  min-width: 2.6rem;
+  border-bottom: 1.5px solid var(--ink);
+  text-align: center;
+  font-family: ui-monospace, monospace;
+  font-weight: 700;
+  padding: 0 0.2rem;
+}
+
+/* --- 小螢幕 375px 防爆版保護 --- */
+@media (max-width: 480px) {
+  .rg-header-inner {
+    padding: 0.45rem 0.6rem;
+  }
+  .rg-wrap {
+    padding: 1rem 0.6rem 3rem;
+  }
+  .rg-section {
+    padding: 0.85rem 0.65rem;
+  }
+  .rg-sim-box {
+    padding: 0.65rem 0.5rem;
+  }
+  .rg-sim-btn {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.4rem;
+    min-width: 100px;
+  }
+  .rg-table th,
+  .rg-table td {
+    padding: 0.4rem 0.45rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* --- 列印樣式 (@media print) --- */
+@media print {
+  .rg-header,
+  .rg-no-print,
+  .rg-footer {
+    display: none !important;
+  }
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+  .rg-wrap {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .rg-section {
+    box-shadow: none !important;
+    border-color: #999999 !important;
+    break-inside: avoid;
+  }
+  .rg-pocket-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8mm !important;
+  }
+  .rg-pocket-card {
+    border: 1.5pt solid #000000 !important;
+    padding: 4mm !important;
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}

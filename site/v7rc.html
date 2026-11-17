@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>A／B 車 手機 V7RC 操作｜機關王 R4M 程式說明站</title>
+  <!-- rg-early:start -->
+<script>
+(function(){try{
+  var t=localStorage.getItem('rg-theme');
+  if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+  var fs=localStorage.getItem('rg-fs');
+  if(fs==='0.92'||fs==='1'||fs==='1.12')document.documentElement.style.setProperty('--fs-user',fs);
+}catch(e){}})();
+</script>
+<!-- rg-early:end -->
+  <link rel="stylesheet" href="assets/rg.css?v=0ee58b4a">
+</head>
+<body>
+
+<!-- rg-nav:start（共用頁首，由 build/build_site.py 自動注入，勿手改） -->
+<header class="rg-header">
+  <div class="rg-header-inner">
+    <div class="rg-brand-row">
+      <a class="rg-brand" href="index.html">🚜 機關王 R4M 程式說明站</a>
+      <span class="rg-bread-sep">/</span>
+      <span class="rg-bread-here">A／B 車 手機 V7RC 操作</span>
+    </div>
+    <div class="rg-tools">
+      <div class="rg-tool-group" role="group" aria-label="字級調整">
+        <button type="button" class="rg-tool-btn" data-rg-fs="0.92" aria-pressed="false" title="縮小字級">A－</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-fs="1" aria-pressed="true" title="標準字級">A</button>
+        <button type="button" class="rg-tool-btn" data-rg-fs="1.12" aria-pressed="false" title="放大字級">A＋</button>
+      </div>
+      <div class="rg-tool-group" role="group" aria-label="顯示模式">
+        <button type="button" class="rg-tool-btn" data-rg-theme="light" aria-pressed="false">淺色</button>
+        <button type="button" class="rg-tool-btn" data-rg-theme="dark" aria-pressed="false">深色</button>
+        <button type="button" class="rg-tool-btn is-current" data-rg-theme="auto" aria-pressed="true">自動</button>
+      </div>
+    </div>
+  </div>
+  <nav class="rg-nav-bar" aria-label="全站導覽">
+    <div class="rg-nav-scroll">
+      <a class="rg-nav-link" data-rg-page="index.html" href="index.html">首頁</a>
+      <a class="rg-nav-link" data-rg-page="prepare.html" href="prepare.html">上場前準備</a>
+      <a class="rg-nav-link" data-rg-page="pairing.html" href="pairing.html">設定與配對</a>
+      <a class="rg-nav-link" data-rg-page="ksb.html" href="ksb.html">KSB 搖桿</a>
+      <a class="rg-nav-link is-current" aria-current="page" data-rg-page="v7rc.html" href="v7rc.html">手機 V7RC</a>
+      <a class="rg-nav-link" data-rg-page="ccar.html" href="ccar.html">C 車循跡</a>
+      <a class="rg-nav-link" data-rg-page="faq.html" href="faq.html">常見問題</a>
+      <a class="rg-nav-link" data-rg-page="tech.html" href="tech.html">老師專區</a>
+    </div>
+  </nav>
+</header>
+<!-- rg-nav:end -->
+
+<main class="rg-wrap">
+  <header class="rg-mast">
+    <p class="rg-kicker">V7RC APP · GAME ADV</p>
+    <h1>A／B 車 手機 V7RC 操作</h1>
+    <p class="rg-dek">用手機藍牙控制車子，不需要配對遙控器：手機連上哪台，就只控那台。</p>
+  </header>
+
+  <section class="rg-section">
+    <h2>一、第一次設定車子</h2>
+    <ol>
+      <li><strong>按住 B 不放</strong>，同時打開車子電源。</li>
+      <li>畫面捲出字母和主控盒數字，B 繼續按著，看到 <code>CAR</code> 才放開。</li>
+      <li>等 <code>CAR</code> 捲完：夾車按 <strong>A</strong>、推扒車按 <strong>B</strong>。</li>
+      <li>等 <code>BOX</code> 捲完：1269 按 <strong>A</strong>、1409 按 <strong>B</strong>。</li>
+      <li>出現 ✓ 完成。</li>
+    </ol>
+  </section>
+
+  <section class="rg-section">
+    <h2>二、連線</h2>
+    <ol>
+      <li>車子開機，<strong>還沒連上手機時按 A</strong>，畫面會捲出一串英文字母（例如 <code>zuvat</code>），這是這台車的藍牙名稱。</li>
+      <li>把這個名稱寫在車身貼紙上。</li>
+      <li>手機打開 V7RC，選 <strong>Game ADV</strong> 介面，在裝置清單找 <code>BBC micro:bit [zuvat]</code> 這種名稱，點它。</li>
+      <li>車子畫面中心恆亮，就是連上了。</li>
+    </ol>
+    <div class="rg-callout rg-callout-danger">
+      <strong>先連先贏：</strong>車子在還沒被連上之前，任何一支手機都連得進去（包括別隊的手機誤點）。一台車同時只能被一支手機連，所以<strong>車子開機後就馬上用自己的手機連上</strong>，連上之後別人就進不來了。
+    </div>
+  </section>
+
+  <section class="rg-section">
+    <h2>三、操作佈局（Game ADV）</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>手機上的位置</th><th>A 車（夾車）</th><th>B 車（推扒車）</th></tr></thead>
+        <tbody>
+          <tr><td><strong>左搖桿 ↕</strong></td><td>前進／後退（類比，推越多越快）</td><td>同左</td></tr>
+          <tr><td><strong>左搖桿 ↔</strong></td><td>轉向（大幅轉向用）</td><td>同左</td></tr>
+          <tr><td><strong>方向鍵 ↑ / ↓</strong></td><td>升降 上／下</td><td>耙子 上／下</td></tr>
+          <tr><td><strong>方向鍵 ← / →</strong></td><td>左／右微調（固定小轉速）</td><td>同左</td></tr>
+          <tr><td><strong>方向鍵 ↖ / ↗</strong></td><td>夾爪 張開／閉合</td><td>閘門 關／開</td></tr>
+          <tr><td><strong>方向鍵 ↙ / ↘</strong></td><td>沒有功能</td><td>沒有功能</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li><strong>← → 微調</strong>：每按一下轉一小段，對位置時用這個，比推搖桿準。點一下也保證轉 0.12 秒。</li>
+      <li><strong>↖ ↗ 要按斜角</strong>：手指偏了會變成升降，按準一點。同一時間只會有一個方向鍵動作成立，兩個機構不會一起亂動。</li>
+      <li>機構在動或微調時，行走速度自動降到 45%，方便對位。</li>
+      <li>和 KSB 搖桿版的按鍵功能、手感一致：↑↓ 對應 E／C，←→ 對應 F／D，↖↗ 對應 A／B。</li>
+    </ul>
+  </section>
+
+  <section class="rg-section">
+    <h2>四、安全設計</h2>
+    <ul>
+      <li>手機斷線，或 0.3 秒沒收到訊號，車子會全停、畫面中心閃爍。</li>
+      <li><strong>手機一鎖螢幕車子就停</strong>，這是安全設計。比賽時手機螢幕保持亮著。</li>
+    </ul>
+  </section>
+
+  <section class="rg-section">
+    <h2>五、V7RC 常見問題</h2>
+    <div class="rg-table-wrap">
+      <table class="rg-table">
+        <thead><tr><th>症狀</th><th>處理</th></tr></thead>
+        <tbody>
+          <tr><td>清單裡找不到車子</td><td>確認車子有開、沒被別支手機連著；手機以前連過這台但重燒過程式 → 到手機藍牙設定「忘記此裝置」。都不是 → 請老師確認燒錄時有裝 <strong>V7RC 擴充套件</strong></td></tr>
+          <tr><td>不知道哪個名字是我的車</td><td>車子沒連線時按 A 看名字</td></tr>
+          <tr><td>連上了但車子不動</td><td>手機 App 要選 Game ADV 介面</td></tr>
+          <tr><td>手機一鎖螢幕車子就停</td><td>正常，手機螢幕保持亮著</td></tr>
+          <tr><td>按 ↖ ↗ 卻變成升降</td><td>斜角沒按準，手指偏上了</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- rg-footer:start -->
+<footer class="rg-footer">
+  <div>車城自造教育科技中心 · 2027 世界機關王 R4M 基礎組程式說明站（更新日期：2026-10-31）</div>
+  <div><a href="index.html">回說明站首頁</a> · <a href="https://ccmtc.mooo.com/">回科技中心官網</a></div>
+</footer>
+<!-- rg-footer:end -->
+</main>
+
+<script src="assets/rg.js?v=89f66e89"></script>
+</body>
+</html>

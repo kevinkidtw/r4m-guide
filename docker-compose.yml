@@ -1,0 +1,19 @@
+# 機關王 R4M 程式說明站 (r4m-guide) — 本機獨立測試用 Compose
+# 正式部署是將 r4m 服務併入 ccmtc-official 的 docker-compose.yml，
+# 透過 Docker 內網與 ccmtc-portal 串接（僅 expose 80，不對外開埠）。
+
+services:
+  r4m:
+    image: nginx:alpine
+    container_name: r4m-guide
+    restart: unless-stopped
+    ports:
+      - "3090:80"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
