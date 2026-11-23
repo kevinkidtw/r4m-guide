@@ -7,7 +7,7 @@
 // 做完後：右上角切到「JavaScript」→ 全選刪除 → 貼上本檔
 
 /**********************************************************************
- *  R4M 遙控發射端 — KSB045 搖桿擴充板   v3.0 / 2026
+ *  R4M 遙控發射端 — KSB045 搖桿擴充板   v3.1 / 2026
  *  車城科技中心
  *
  *  ★ v3：遙控器「完全不用設定」——沒有頻道碼、沒有 A/B 車，開機就能用。
@@ -17,6 +17,9 @@
  *
  *  ══════════════ 開 機 操 作 ══════════════
  *   直接開機即可。開機時不要碰搖桿（要量搖桿中心點）。
+ *   按住 A 開機約 2 秒，出現 P → 配對模式（車子也要先進 P）
+ *        兩邊都出現 ✓ 就完成；30 秒沒配到 → ✗，照常進入操控
+ *        配對訊號用最小功率送，所以遙控器要拿到車子旁邊（30 公分內）
  *   按住 A+B 開機 → 頻段鎖定在預設 7（主辦要求用預設頻段時才用；車子也要一樣）
  *
  *  ══════════════ 平 時 操 作 ══════════════
@@ -59,6 +62,15 @@ const 控制群組 = 173         // 固定群組：硬體層直接濾掉不是�
 const 封包名 = "R4"
 const 回報名 = "R4K"
 
+// 配對專用頻道（車子必須相同）
+const 配對頻段 = 7
+const 配對群組 = 174
+const 配對名 = "R4P"         // 配對模式時送的封包
+const 配對確認名 = "R4OK"    // 車子配好後回送，數值 = 本機序號
+const 配對功率 = 0           // 配對訊號的發射功率（0 最小）。要貼很近才配得到 → 改 2
+const 配對按住毫秒 = 2000    // 開機時按住 A 這麼久才進配對（避免誤觸）
+const 配對逾時毫秒 = 30000
+
 // 由晶片序號算出頻段索引（車子用同一個公式，算出跟遙控器一樣的頻段）
 function 頻段索引(sn: number): number {
     return ((sn ^ (sn >> 16)) & 0xFFFF) % 乾淨頻段.length
@@ -82,6 +94,7 @@ let midY = 512
 let seq = 0
 let 上次回報 = 0
 let 上次警告 = 0
+let 配對成功 = false
 
 
 // ═══════════════════ 小 工 具 ═══════════════════
@@ -132,17 +145,63 @@ if (頻段鎖定) {
     while (input.buttonIsPressed(Button.A) || input.buttonIsPressed(Button.B)) basic.pause(20)
 }
 
-取中心()
+// 配對：按住 A 開機約 2 秒 → P
+let 進配對 = false
+if (!頻段鎖定 && input.buttonIsPressed(Button.A)) {
+    const t0 = input.runningTime()
+    let 第幾格 = 0
+    while (input.buttonIsPressed(Button.A) && input.runningTime() - t0 < 配對按住毫秒) {
+        // 按住期間由左到右亮起一排燈，亮滿就進配對
+        const 應亮 = Math.idiv((input.runningTime() - t0) * 5, 配對按住毫秒)
+        while (第幾格 <= 應亮 && 第幾格 < 5) { led.plot(第幾格, 4); 第幾格++ }
+        basic.pause(20)
+    }
+    if (input.buttonIsPressed(Button.A)) {
+        進配對 = true
+        basic.showString("P")
+        震動(100)
+        while (input.buttonIsPressed(Button.A)) basic.pause(20)   // 等手放開
+    } else {
+        basic.clearScreen()                  // 沒按滿 2 秒 → 當作正常開機
+    }
+}
+
+radio.setTransmitSerialNumber(true)          // 車子端靠這個認主人（配對）
+
+// 接收車子的封包：
+//   配對確認（數值＝我的序號）→ 配對成功
+//   心跳回報（數值＝它配對的遙控器序號）→ 等於我才算連線
+radio.onReceivedValue(function (name, value) {
+    if (value != 我的序號) return
+    if (name == 配對確認名) 配對成功 = true
+    else if (name == 回報名) 上次回報 = input.runningTime()
+})
+
+if (進配對) {
+    radio.setGroup(配對群組)
+    radio.setFrequencyBand(配對頻段)
+    radio.setTransmitPower(配對功率)
+    const t0 = input.runningTime()
+    while (!配對成功 && input.runningTime() - t0 < 配對逾時毫秒) {
+        radio.sendValue(配對名, 0)            // 序號會自動附上
+        basic.pause(100)
+    }
+    if (配對成功) {
+        basic.showIcon(IconNames.Yes)
+        震動(300)
+    } else {
+        basic.showIcon(IconNames.No)         // 沒收到車子確認（車子可能其實有配好，看中心燈就知道）
+        震動(100)
+    }
+    basic.pause(1000)
+    basic.clearScreen()
+}
+
+取中心()                                     // 手要離開搖桿
 
 radio.setGroup(控制群組)
 radio.setFrequencyBand(頻段鎖定 ? 7 : 乾淨頻段[頻段索引(我的序號)])
 radio.setTransmitPower(7)
-radio.setTransmitSerialNumber(true)          // 車子端靠這個認主人（配對）
-
-// 接收車子的心跳回報：車子回報的數值是「它配對的遙控器序號」，等於我才算連線
-radio.onReceivedValue(function (name, value) {
-    if (name == 回報名 && value == 我的序號) 上次回報 = input.runningTime()
-})
 
 basic.clearScreen()
 if (頻段鎖定) basic.showString("L")      // 提醒：現在是預設頻段模式

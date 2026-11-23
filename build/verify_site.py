@@ -214,8 +214,8 @@ def run_quick_checks() -> bool:
             if 'class="rg-bread-here"' not in html:
                 errors.append(f'{rel}: 缺少麵包屑區塊 (rg-bread-here)')
                 page_ok = False
-            if '更新日期：2026-10-31' not in html:
-                errors.append(f'{rel}: 缺少頁尾更新日期 2026-10-31')
+            if '更新日期：2026-11-23' not in html:
+                errors.append(f'{rel}: 缺少頁尾更新日期 2026-11-23')
                 page_ok = False
         if page_ok:
             print(f'   ✅ {len(PAGES)} 個核心頁面全數存在，導覽列、麵包屑與頁尾更新日期皆齊全。')
@@ -359,7 +359,7 @@ def run_quick_checks() -> bool:
     forbidden_words = ['絕不', '完全獨立', '100% 可靠', '100%可靠']
     version_words = re.compile(r'v[0-9](\.[0-9])?\s*修正|舊版|修正紀錄|已由.*取代')
     required = {
-        'pairing.html': ['15 秒', '交叉測試', '按住 B', '按住 A'],
+        'pairing.html': ['30 秒', '30 公分', '交叉測試', '按住 B', '按住 A'],
         'ksb.html': ['E / C', 'F / D', '慢速模式'],
         'v7rc.html': ['Game ADV', '先連先贏'],
         'ccar.html': ['MS_每公分', 'MS_每度', '急停'],
