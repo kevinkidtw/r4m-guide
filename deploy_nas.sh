@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# 2026-11-23 停用：本站已併入 ccmtc-guides 共用容器，獨立容器與 compose 服務已移除。
+echo "⛔ 本站已併入 ccmtc-guides。請先建置本專案的 site/，再到 ../ccmtc-guides 執行 ./deploy_nas.sh" >&2
+exit 1
 #
 # 機關王 R4M 程式說明站 (r4m-guide) 一鍵部署腳本
 # 流程：本機編譯與驗證 → rsync 同步內容 → 重啟 r4m 容器 → 線上路由驗證

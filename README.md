@@ -1,5 +1,9 @@
 # r4m-guide — 機關王 R4M 程式說明站
 
+> **2026-11-23 部署方式變更：本站已併入官網共用容器 `ccmtc-guides`（網址不變）。**
+> 改完內容後先在本專案建置出 `site/`，再到 `../ccmtc-guides` 執行 `./deploy_nas.sh`。
+> 本專案的 `deploy_nas.sh` 與獨立容器已停用。
+
 > **2026-11 存取方式變更：本站已改為公開，不需通行碼。**
 > 存取設定統一在 `ccmtc-official/ccmtc-portal/src/config/sites.mjs`（`auth: null`）。
 > 下文的通行碼相關章節保留作為紀錄；日後要恢復，在該檔把 `auth` 改回註解中的設定，並在 NAS 的 `.env` 補回環境變數即可。
